@@ -4,6 +4,6 @@ exports.getProdutos = function () {
   return produtosData.getProdutos()
 }
 
-exports.getProdutosById = function () {
+exports.getProdutosById = function (id) {
   return produtosData.getProdutosById(id)
 }
