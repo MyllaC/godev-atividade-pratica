@@ -4,14 +4,14 @@ exports.getProdutos = function () {
   return produtosData.getProdutos()
 }
 
-exports.getProdutosById = function (id) {
-  return produtosData.getProdutosById(id)
+exports.selectProdutoById = function (id) {
+  return produtosData.selectProdutoById(id)
 }
 
 exports.insertNovoProduto = function (novoProduto) {
   return produtosData.insertNovoProduto(novoProduto)
 }
 
-exports.updateProduto = function (produto) {
-  return produtosData.updateProduto(produto)
+exports.updateProduto = function (id, produto) {
+  return produtosData.updateProduto(id, produto)
 }
