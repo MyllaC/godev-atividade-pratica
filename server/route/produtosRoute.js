@@ -14,12 +14,20 @@ router.get('/produtos/:id', async function (req, res) {
   res.json(produtosJSON)
 })
 
-router.post('/produtos/:id', async function (req, res) {
-  res.send('Método POST')
+router.post('/produtos', async function (req, res) {
+  const dados = req.body
+  let produto = await produtoService.insertNovoProduto(dados)
+
+  res.json(produto)
 })
 
 router.put('/produtos/:id', async function (req, res) {
-  res.send('Método PUT')
+  const dados = req.body
+  const id = req.params.id
+
+  let produto = await produtoService.updateProduto(id, dados)
+
+  res.json(produto)
 })
 
 router.delete('/produtos/:id', async function (req, res) {

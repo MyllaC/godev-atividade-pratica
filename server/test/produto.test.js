@@ -32,8 +32,24 @@ test('Deve recuperar um registro no banco de dados a partir de um id', async fun
   expect(resposta).toHaveLength(1)
 })
 
-test('Deve inserir um registro no banco de dados', async function () {})
+test('Deve inserir um registro no banco de dados', async function () {
+  const novoProduto = {
+    descricao: 'Descrição do produto',
+    preco: 'R$ 6,00',
+    tipo_produto: 'tipo do produto'
+  }
 
-test('Deve alterar um registro no banco de dados a partir de um id', async function () {})
+  const response = await axios({
+    url: 'http://localhost:3000/produtos',
+    method: 'post',
+    data: novoProduto
+  })
+
+  console.log(response.data)
+})
+
+test.only('Deve alterar um registro no banco de dados a partir de um id', async function () {
+  
+})
 
 test('Deve apagar um registro no banco de dados a partir de um id', async function () {})
