@@ -10,6 +10,7 @@ test('Deve obter os produtos do banco de dados', async function () {
   const resposta = response.data
   const status = response.status
   expect(status).toBe(200)
+  expect(resposta).toHaveLength(2)
 })
 
 test('Deve recuperar um registro no banco de dados a partir de um id', async function () {
@@ -25,7 +26,7 @@ test('Deve recuperar um registro no banco de dados a partir de um id', async fun
   const tipo_produto = resposta[0].tipo_produto
 
   expect(id).toBe(2)
-  expect(descricao).toBe('Descrição produto 002')
+  expect(descricao).toBe('Descrição Produto 002')
   expect(preco).toBe('R$ 2,99')
   expect(tipo_produto).toBe('Tipo de produto 002')
 })
@@ -80,4 +81,12 @@ test('Deve alterar um registro no banco de dados a partir de um id', async funct
   expect(tipo_produto).toBe('Novo Tipo de produto 003')
 })
 
-test('Deve apagar um registro no banco de dados a partir de um id', async function () {})
+test('Deve apagar um registro no banco de dados a partir de um id', async function () {
+  const idDeleted = 1
+  const response = await axios({
+    url: `http://localhost:3000/produtos/${idDeleted}`,
+    method: 'delete'
+  })
+
+  expect(response.data).not.toBeNull()
+})

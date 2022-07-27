@@ -21,3 +21,7 @@ exports.updateProduto = function (id, produto) {
     [produto.descricao, produto.preco, produto.tipo_produto, id]
   )
 }
+
+exports.deleteProduto = function (id) {
+  return database.none('DELETE FROM produto WHERE id = $1', [id])
+}
