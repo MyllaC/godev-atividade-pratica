@@ -17,9 +17,21 @@ router.get('/produtos/:id', async function (req, res) {
   }
 })
 
+router.get('/produtos/tipo-produto/:tipoProduto', async function (req, res) {
+  const descricaoTipoProduto = req.params.tipoProduto
+  try {
+    let produtosJSON = await produtoService.selectProdutoByDescricaoTipo(
+      descricaoTipoProduto
+    )
+    res.json(produtosJSON)
+  } catch (e) {
+    res.status(404).send(e.message)
+    
+  }
+})
+
 router.post('/produtos', async function (req, res) {
   const dados = req.body
-  console.log(dados)
   try {
     produtoService.insertNovoProduto(dados)
     res.status(201).send('Cadastro efetuado com sucesso!!!')
