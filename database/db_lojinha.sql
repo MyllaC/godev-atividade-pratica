@@ -31,6 +31,8 @@ VALUES
     ('Sabão em Pó', '15,00', '4'),
     ('Camisa', '59,00', '2'),
     ('Macarrão', '5,99', '3');
+
+    -- inserir novo produto
        
 INSERT INTO produto (descricao, preco, id_tipo_produto)
 VALUES

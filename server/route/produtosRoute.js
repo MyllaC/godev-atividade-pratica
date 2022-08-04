@@ -17,18 +17,20 @@ router.get('/produtos/:id', async function (req, res) {
   }
 })
 
-router.get('/produtos/tipo-produto/:tipoProduto', async function (req, res) {
-  const descricaoTipoProduto = req.params.tipoProduto
-  try {
-    let produtosJSON = await produtoService.selectProdutoByDescricaoTipo(
-      descricaoTipoProduto
-    )
-    res.json(produtosJSON)
-  } catch (e) {
-    res.status(404).send(e.message)
-    
+router.get(
+  '/produtos/tipo-produto/:descricaoTipoProduto',
+  async function (req, res) {
+    const descricaoTipoProduto = req.params.descricaoTipoProduto
+    try {
+      let produtosJSON = await produtoService.selectProdutoByDescricaoTipo(
+        descricaoTipoProduto
+      )
+      res.json(produtosJSON)
+    } catch (e) {
+      res.status(404).send(e.message)
+    }
   }
-})
+)
 
 router.post('/produtos', async function (req, res) {
   const dados = req.body
